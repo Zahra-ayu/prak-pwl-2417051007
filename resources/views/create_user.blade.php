@@ -12,11 +12,13 @@
             <input type="text" id="npm" name="npm"><br><br>
 
             <label for="kelas">Kelas:</label><br>  
-            <select name="kelas_id" id="kelas_id"></select>
+            <select name="kelas_id" id="kelas_id">
 
                 @foreach ($kelas as $kelasItem) 
                 
-                    <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>  
+                    <option value="{{ $kelasItem->id }}">
+                        {{ $kelasItem->nama_kelas }}
+                    </option>  
                     
                 @endforeach  
             
