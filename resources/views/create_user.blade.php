@@ -1,31 +1,42 @@
 @extends('layouts.app')
-@section('content')  
+@section('content')
 
-    <div>  
+<div class="form-container">
+    <div class="form-header">
         <h1>Buat Pengguna Baru</h1>
-        <form action="{{ route('user.store') }}" method="POST"> 
-            @csrf 
-            <label for="nama">Nama:</label><br>  
-            <input type="text" id="nama" name="nama"><br><br>  
+        <p>Tambahkan data pengguna baru ke dalam sistem</p>
+    </div>
 
-            <label for="npm">NPM:</label><br>  
-            <input type="text" id="npm" name="npm"><br><br>
+    <div class="form-card">
+        <form action="{{ route('user.store') }}" method="POST">
+            @csrf
 
-            <label for="kelas">Kelas:</label><br>  
-            <select name="kelas_id" id="kelas_id">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama">
+            </div>
 
-                @foreach ($kelas as $kelasItem) 
-                
-                    <option value="{{ $kelasItem->id }}">
-                        {{ $kelasItem->nama_kelas }}
-                    </option>  
-                    
-                @endforeach  
-            
-            </select><br><br>    
-            
-            <button type="submit">Submit</button>  
-        </form>  
-    </div> 
+            <div class="form-group">
+                <label for="npm">NPM</label>
+                <input type="text" id="npm" name="npm" placeholder="Masukkan NPM">
+            </div>
 
-@endsection 
+            <div class="form-group">
+                <label for="kelas_id">Kelas</label>
+
+                <select name="kelas_id" id="kelas_id">
+                    @foreach ($kelas as $kelasItem)
+                        <option value="{{ $kelasItem->id }}">
+                            {{ $kelasItem->nama_kelas }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="submit-button">
+                Tambahkan Pengguna
+            </button>
+        </form>
+    </div>
+</div>
+@endsection
